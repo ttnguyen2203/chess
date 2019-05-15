@@ -1,0 +1,40 @@
+
+
+STRUCTURE
+
+match file - framework, runs the chess match, stores current and all previous states of the game
+	- self.game = init game
+	- self.turn = black/white
+	- command: start, save, reload
+	- alternating white and black turn
+	- move(x1,y1, x2,y2): - translate from chess tile scheme (A,1) to array (1,1)
+		- check piece validity
+		- check move validity
+		- check win condition
+		- update state
+	
+
+game file:
+	- class game:
+		- self.state: 8x8 2D array, current state of the game
+			- 0 = empty space
+			- numbers from 1 to 6 = white pieces, -1 to -6 = black pieces
+		- self.history: stack / doubly linked list / array, keeps all previous states of the game
+
+		- static methods:
+			- color(x, y): checks index (x,y) and returns color of tile
+
+			- valid_moves(x, y): returns array list of available moves for piece located at (x, y)
+				- consider: 
+					"path" taking
+					potential obstacles on the path, blocked by team or enemy 
+				- implementations:
+					- with data structures:
+						- linked list of each potential paths (rook has (max) 4, pawn has 3, queen has 8)
+						- array list of each potential paths
+					- have directional function:
+						- straight(limit?)
+						- diag(limit?)
+						- knight()
+						- pawn()
+
