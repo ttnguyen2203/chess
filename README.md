@@ -1,2 +1,1 @@
-# chess
-Simple chess game
+# Outlines / plans of projects
